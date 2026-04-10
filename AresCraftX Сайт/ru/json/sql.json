@@ -1,0 +1,21 @@
+{
+    "supabase": {
+        "url": "https://eykzqjysyhannjylofmh.supabase.co",
+        "anonKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5a3pxanlzeWhhbm5qeWxvZm1oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NDk4OTUsImV4cCI6MjA5MTMyNTg5NX0.Ci1WBIrTcyOPdj4ecFEvhYA-TbZbG4pw22kT8AXh8k4",
+        "tables": {
+            "users": "users",
+            "sessions": "sessions",
+            "twofa": "twofa_codes"
+        }
+    },
+    "emailjs": {
+        "serviceId": "service_unn904o",
+        "templateId": "template_ovhcvfa",
+        "publicKey": "kKTaWZRSBG53fUs48"
+    },
+    "app": {
+        "name": "AresCraftX",
+        "version": "1.0.0",
+        "apiUrl": "http://localhost:3000/api"
+    }
+}

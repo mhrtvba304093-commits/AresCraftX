@@ -1,0 +1,722 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a00 50%, #2a0a00 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 480px;
+}
+
+.auth-card {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 40px 32px;
+    border: 1px solid rgba(221, 134, 7, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(221, 134, 7, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Огненный логотип - статичный */
+.logo-section {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.fire-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+}
+
+.flame-icon {
+    position: relative;
+    font-size: 48px;
+    color: #DD8607;
+    text-shadow: 0 0 10px #DD8607, 0 0 20px #C25006;
+}
+
+.flame-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    background: radial-gradient(circle, rgba(221,134,7,0.3) 0%, rgba(194,80,6,0) 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.logo-text {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo-ares {
+    color: #E0E5E8;
+}
+
+.logo-craft {
+    color: #DD8607;
+}
+
+.logo-x {
+    color: #C25006;
+}
+
+.fire-underline {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #DD8607, #C25006, #943A02);
+    margin: 8px auto 0;
+    border-radius: 3px;
+}
+
+/* Табы */
+.auth-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid rgba(224, 229, 232, 0.1);
+    padding-bottom: 12px;
+}
+
+.tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #E0E5E8;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+}
+
+.tab-btn.active {
+    opacity: 1;
+    background: linear-gradient(135deg, #DD8607, #C25006);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(221, 134, 7, 0.3);
+}
+
+/* Формы */
+.auth-form {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Социальные кнопки */
+.social-login {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    background: rgba(224, 229, 232, 0.1);
+    color: #E0E5E8;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+}
+
+.social-btn.google:hover {
+    background: #DB4437;
+    box-shadow: 0 4px 12px rgba(219, 68, 55, 0.3);
+}
+
+.social-btn.discord:hover {
+    background: #5865F2;
+    box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+}
+
+.social-btn.telegram:hover {
+    background: #0088cc;
+    box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3);
+}
+
+/* Divider */
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.divider span {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0 12px;
+    color: #E0E5E8;
+    font-size: 12px;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(224, 229, 232, 0.2);
+    z-index: -1;
+}
+
+/* Input группы */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i:first-child {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #DD8607;
+    font-size: 16px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 14px 14px 40px;
+    background: rgba(224, 229, 232, 0.08);
+    border: 1px solid rgba(221, 134, 7, 0.3);
+    border-radius: 10px;
+    color: #E0E5E8;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #DD8607;
+    box-shadow: 0 0 10px rgba(221, 134, 7, 0.3);
+    background: rgba(224, 229, 232, 0.12);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #E0E5E8;
+    opacity: 0.6;
+}
+
+/* Форм опции */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 13px;
+}
+
+.checkbox-label, .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #E0E5E8;
+    cursor: pointer;
+}
+
+.verification-options {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.forgot-link {
+    color: #DD8607;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.forgot-link:hover {
+    color: #C25006;
+}
+
+/* Кнопка отправки */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #DD8607, #C25006);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 16px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(221, 134, 7, 0.4);
+}
+
+.terms-link {
+    text-align: center;
+    font-size: 12px;
+}
+
+.terms-link a, .terms-inline {
+    color: #DD8607;
+    text-decoration: none;
+}
+
+/* Панель восстановления */
+.forgot-panel {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.forgot-panel.active {
+    display: block;
+}
+
+.back-btn {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid #DD8607;
+    border-radius: 10px;
+    color: #DD8607;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.back-btn:hover {
+    background: rgba(221, 134, 7, 0.1);
+}
+
+/* Модальные окна */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid #DD8607;
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.modal-header i {
+    font-size: 32px;
+    color: #DD8607;
+}
+
+.modal-header h3 {
+    color: #E0E5E8;
+}
+
+.modal-content p {
+    color: #E0E5E8;
+    margin-bottom: 20px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.cancel-btn {
+    flex: 1;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid #943A02;
+    border-radius: 8px;
+    color: #E0E5E8;
+    cursor: pointer;
+}
+
+.resend-btn {
+    margin-top: 16px;
+    background: transparent;
+    border: none;
+    color: #DD8607;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 24px 20px;
+    }
+    
+    .social-login {
+        flex-direction: column;
+    }
+    
+    .logo-text {
+        font-size: 24px;
+    }
+    
+    .flame-icon {
+        font-size: 36px;
+    }
+}
+
+
+/* Индикатор силы пароля */
+.password-strength {
+    margin-top: 8px;
+}
+
+.strength-bar {
+    height: 4px;
+    background: rgba(224, 229, 232, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.strength-text {
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+.strength-tips {
+    font-size: 10px;
+    color: #E0E5E8;
+    opacity: 0.7;
+}
+
+/* Обновленный дизайн выбора способа верификации */
+.verification-options {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    background: rgba(224, 229, 232, 0.05);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(221, 134, 7, 0.2);
+}
+
+.radio-label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid transparent;
+}
+
+.radio-label:hover {
+    background: rgba(221, 134, 7, 0.1);
+    border-color: rgba(221, 134, 7, 0.3);
+}
+
+.radio-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #DD8607;
+}
+
+.radio-label:has(input:checked) {
+    background: linear-gradient(135deg, rgba(221, 134, 7, 0.15), rgba(194, 80, 6, 0.1));
+    border-color: #DD8607;
+    box-shadow: 0 0 8px rgba(221, 134, 7, 0.2);
+}
+
+.radio-label i {
+    font-size: 16px;
+    color: #DD8607;
+}
+
+/* Анимация для активного состояния */
+@keyframes radioPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(221, 134, 7, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(221, 134, 7, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(221, 134, 7, 0);
+    }
+}
+
+.radio-label:has(input:checked) {
+    animation: radioPulse 0.4s ease;
+}
+/* Индикатор силы пароля */
+.password-strength {
+    margin-top: -12px;
+    margin-bottom: 20px;
+}
+
+.strength-bar {
+    height: 4px;
+    background: rgba(224, 229, 232, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.strength-text {
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+.strength-tips {
+    font-size: 10px;
+    color: #E0E5E8;
+    opacity: 0.7;
+}
+
+/* Обновленный дизайн выбора способа верификации */
+.verification-options {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    background: rgba(224, 229, 232, 0.05);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(221, 134, 7, 0.2);
+}
+
+.radio-label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid transparent;
+}
+
+.radio-label:hover {
+    background: rgba(221, 134, 7, 0.1);
+    border-color: rgba(221, 134, 7, 0.3);
+}
+
+.radio-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #DD8607;
+}
+
+.radio-label:has(input:checked) {
+    background: linear-gradient(135deg, rgba(221, 134, 7, 0.15), rgba(194, 80, 6, 0.1));
+    border-color: #DD8607;
+    box-shadow: 0 0 8px rgba(221, 134, 7, 0.2);
+}
+
+.radio-label i {
+    font-size: 16px;
+    color: #DD8607;
+}
+
+/* Анимация для активного состояния */
+@keyframes radioPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(221, 134, 7, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(221, 134, 7, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(221, 134, 7, 0);
+    }
+}
+
+.radio-label:has(input:checked) {
+    animation: radioPulse 0.4s ease;
+}
+/* Индикатор силы пароля */
+.password-strength {
+    margin-top: -12px;
+    margin-bottom: 20px;
+}
+
+.strength-bar {
+    height: 4px;
+    background: rgba(224, 229, 232, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.strength-text {
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+.strength-tips {
+    font-size: 10px;
+    color: #E0E5E8;
+    opacity: 0.7;
+}
+
+/* Выбор верификации */
+.verification-options {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    background: rgba(224, 229, 232, 0.05);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(221, 134, 7, 0.2);
+}
+
+.radio-label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid transparent;
+}
+
+.radio-label:hover {
+    background: rgba(221, 134, 7, 0.1);
+    border-color: rgba(221, 134, 7, 0.3);
+}
+#telegram-widget-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    margin-top: 8px;
+}
+
+.social-btn.telegram {
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #DD8607;
+}
+
+.radio-label:has(input:checked) {
+    background: linear-gradient(135deg, rgba(221, 134, 7, 0.15), rgba(194, 80, 6, 0.1));
+    border-color: #DD8607;
+    box-shadow: 0 0 8px rgba(221, 134, 7, 0.2);
+}
+
+.radio-label i {
+    font-size: 16px;
+    color: #DD8607;
+}
+.social-btn.github:hover {
+    background: #333;
+    box-shadow: 0 4px 12px rgba(51, 51, 51, 0.3);
+}
